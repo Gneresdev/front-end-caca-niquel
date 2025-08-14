@@ -1,0 +1,149 @@
+/* Reset para garantir que a página cole nas bordas da tela */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* --- NOVO: Fundo com Imagem e Blur --- */
+body::before {
+    content: ''; /* Essencial para o pseudo-elemento funcionar */
+    position: fixed; /* Fica fixo na tela, mesmo com rolagem */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 100% da largura da tela */
+    height: 100vh; /* 100% da altura da tela */
+    z-index: -1; /* Joga o fundo para TRÁS de todo o conteúdo da página */
+
+    /* Aplica a imagem de fundo */
+    background-image: url('https://www.rbsdirect.com.br/filestore/8/4/4/8/5/2/5_9f03ff59304712d/5258448_cb31d1a186db407.jpg');
+    background-size: cover;
+    background-position: center;
+
+    /* O blur é aplicado SOMENTE nesta camada de fundo */
+    filter: blur(5px);
+
+    /* Opcional: Escurece um pouco a imagem para o conteúdo se destacar mais */
+    -webkit-filter: blur(5px) brightness(0.7);
+    filter: blur(5px) brightness(0.7);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #1a2b3c; /* Retornando ao fundo escuro e simples */
+    color: white;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.1rem;
+    color: #f1c40f;
+    text-transform: uppercase;
+
+    /* Brilho reduzido (raio de desfoque menor) */
+    text-shadow:
+        0 0 3px #fff,
+        0 0 7px #f1c40f,
+        0 0 10px #f1c40f,
+        2px 2px 4px rgba(0,0,0,0.7);
+
+    margin-top: 0;
+    padding-top: 15px;
+}
+/* Moldura na tela inteira, com o layout vertical que você pediu */
+#roleta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    height: 100vh;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 20px 25px;
+    /* Retornando ao fundo escuro e semi-transparente */
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 3px solid #f1c40f;
+    border-radius: 0;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.5), inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+.reels-container {
+    display: flex;
+    justify-content: center;
+}
+
+.reel {
+    width: 120px;
+    height: 360px; /* Mantendo a grade 3x3 */
+    margin: 0 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    transition: border-color 0.5s ease;
+}
+
+.symbols {
+    font-size: 100px;
+    line-height: 120px;
+    position: relative;
+    transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-family: 'Noto Color Emoji', sans-serif;
+}
+
+.spinning .symbols {
+    animation: spin 0.4s ease-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+
+.winning-symbol {
+    animation: symbol-glow 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes symbol-glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f1c40f; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px #f1c40f, 0 0 30px #f1c40f, 0 0 40px #f1c40f; }
+}
+
+/* Retornando ao botão laranja profissional que tínhamos antes */
+button#spinButton {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    padding: 18px 45px;
+    margin-top: 20px;
+    border-radius: 50px;
+    border: 2px solid #a85a1e;
+    cursor: pointer;
+    background: linear-gradient(180deg, #f78e48 0%, #e67e22 100%);
+    box-shadow: 0px 6px 0px #a85a1e, 0px 9px 25px rgba(0,0,0,0.7);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    transition: all 0.1s ease-in-out;
+}
+
+button#spinButton:hover {
+    background: linear-gradient(180deg, #f89e5f 0%, #f08e3a 100%);
+}
+
+button#spinButton:active {
+    transform: translateY(4px);
+    box-shadow: 0px 2px 0px #a85a1e, 0px 5px 15px rgba(0,0,0,0.6);
+}
+
+.info, #statusDiv {
+    font-size: 22px;
+    margin-top: 15px;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.controls-container {
+    /* Estilos específicos podem ir aqui */
+}
