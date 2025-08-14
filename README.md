@@ -3,7 +3,7 @@ Fron-end para API em Java + SparkJava lógica de um jogo de caça-níquel.
 
 # 🎰 Caça-Níquel Full-Stack (Frontend)
 
-![GIF do Jogo em Ação](file:///C:/Users/gusta/OneDrive/Desktop/clideo_editor_ab6dff13c51242fd93c6d852076ef7ac.gif)
+![GIF do Jogo em Ação](assets/demo.gif)
 
 ## 📖 Sobre o Projeto
 
